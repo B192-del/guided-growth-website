@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guided Growth Consulting — AI courses for every level</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15181f;
+    --paper:#f6f2ea;
+    --paper-2:#eee7d9;
+    --pine:#1f3329;
+    --pine-deep:#142019;
+    --moss:#3c6e51;
+    --sprout:#7fb069;
+    --amber:#e8a23d;
+    --line:rgba(21,24,31,0.14);
+    --line-dark:rgba(246,242,234,0.16);
+    --max:1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;font-size:16px;line-height:1.55;}
+  h1,h2,h3,.display{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-0.01em;margin:0;}
+  .mono{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.08em;font-size:0.72rem;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(246,242,234,0.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .nav-inner{max-width:var(--max);margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;}
+  .brand .ring{width:26px;height:26px;flex-shrink:0;}
+  .nav-links{display:flex;gap:28px;align-items:center;}
+  .nav-links a{font-family:'JetBrains Mono',monospace;font-size:0.74rem;text-transform:uppercase;letter-spacing:0.07em;text-decoration:none;color:var(--ink);opacity:0.75;}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{background:var(--pine);color:var(--paper);padding:9px 18px;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.07em;text-decoration:none;}
+
+  .hero{position:relative;background:var(--pine-deep);color:var(--paper);overflow:hidden;padding:96px 0 70px;}
+  .hero-inner{max-width:var(--max);margin:0 auto;padding:0 28px;display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;}
+  .eyebrow{color:var(--sprout);margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--sprout);display:inline-block;}
+  .hero h1{font-size:clamp(2.4rem,4.6vw,3.6rem);line-height:1.04;color:var(--paper);}
+  .hero h1 em{font-style:italic;color:var(--sprout);}
+  .hero p.lede{margin-top:22px;font-size:1.08rem;max-width:480px;color:rgba(246,242,234,0.78);}
+  .hero-actions{margin-top:34px;display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{display:inline-block;padding:13px 24px;border-radius:3px;text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.06em;border:1px solid transparent;transition:transform .15s ease, opacity .15s ease;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn-amber{background:var(--amber);color:var(--pine-deep);}
+  .btn-outline{border:1px solid var(--line-dark);color:var(--paper);}
+  .btn-outline:hover{background:rgba(246,242,234,0.08);}
+
+  .path-card{background:rgba(246,242,234,0.04);border:1px solid var(--line-dark);border-radius:6px;padding:22px;}
+  .path-card .mono{color:var(--sprout);display:block;margin-bottom:14px;}
+  .path-card svg{width:100%;height:auto;}
+
+  section{padding:84px 0;}
+  .section-head{max-width:620px;margin-bottom:48px;}
+  .section-head .mono{color:var(--moss);display:block;margin-bottom:12px;}
+  .section-head h2{font-size:clamp(1.7rem,3vw,2.3rem);}
+  .section-head p{margin-top:14px;color:rgba(21,24,31,0.68);font-size:1.02rem;}
+
+  .rings{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);}
+  .ring-item{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:30px 24px;position:relative;}
+  .ring-item:last-child{border-right:none;}
+  .ring-item .ring-num{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--moss);display:flex;align-items:center;gap:8px;margin-bottom:18px;}
+  .ring-item .ring-num .dot{width:24px;height:24px;border-radius:50%;border:2px solid var(--moss);display:inline-flex;align-items:center;justify-content:center;background:transparent;}
+  .ring-item h3{font-size:1.18rem;margin-bottom:10px;}
+  .ring-item p{color:rgba(21,24,31,0.66);font-size:0.93rem;margin-bottom:16px;}
+  .ring-item .who{font-family:'JetBrains Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.05em;color:rgba(21,24,31,0.5);}
+
+  .courses{display:flex;flex-direction:column;border-top:1px solid var(--line);}
+  .course{display:grid;grid-template-columns:120px 1.5fr 1.1fr 150px;gap:24px;align-items:start;padding:28px 0;border-bottom:1px solid var(--line);}
+  .course .lvl{font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--moss);}
+  .course h3{font-size:1.15rem;margin-bottom:8px;}
+  .course .desc{color:rgba(21,24,31,0.65);font-size:0.92rem;margin-bottom:10px;}
+  .course .topics{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;}
+  .course .topics li{font-family:'JetBrains Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.03em;background:var(--paper-2);border:1px solid var(--line);padding:4px 9px;border-radius:20px;color:rgba(21,24,31,0.6);}
+  .course .meta{font-family:'JetBrains Mono',monospace;font-size:0.74rem;color:rgba(21,24,31,0.55);}
+  .course .price{font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;text-align:right;}
+  .course .buy{display:block;margin-top:8px;text-align:right;}
+  .buy-link{font-family:'JetBrains Mono',monospace;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px;}
+
+  .about{background:var(--paper-2);}
+  .about-inner{display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:start;}
+  .about-photo{aspect-ratio:4/5;background:var(--pine);border-radius:6px;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative;}
+  .about-photo svg{width:62%;}
+  .about h2{font-size:clamp(1.6rem,2.8vw,2.1rem);margin-bottom:18px;}
+  .about p{color:rgba(21,24,31,0.72);margin-bottom:16px;}
+  .about-stats{display:flex;gap:36px;margin-top:28px;border-top:1px solid var(--line);padding-top:24px;}
+  .about-stats .num{font-family:'Fraunces',serif;font-weight:600;font-size:1.7rem;}
+  .about-stats .lab{font-family:'JetBrains Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.05em;color:rgba(21,24,31,0.55);}
+
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);}
+  .plan{padding:34px 28px;border-right:1px solid var(--line);position:relative;}
+  .plan:last-child{border-right:none;}
+  .plan.featured{background:var(--pine-deep);color:var(--paper);}
+  .plan .tag{font-family:'JetBrains Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--moss);}
+  .plan.featured .tag{color:var(--sprout);}
+  .plan h3{font-size:1.4rem;margin:14px 0 4px;}
+  .plan .price{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:600;margin-bottom:6px;}
+  .plan .price span{font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:400;opacity:0.6;}
+  .plan .audience{font-family:'JetBrains Mono',monospace;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.04em;opacity:0.6;margin-bottom:18px;display:block;}
+  .plan ul{list-style:none;margin:18px 0 28px;padding:0;font-size:0.92rem;}
+  .plan li{padding:8px 0;border-top:1px solid var(--line);color:rgba(21,24,31,0.72);}
+  .plan.featured li{border-top:1px solid var(--line-dark);color:rgba(246,242,234,0.82);}
+  .plan li:first-child{border-top:none;}
+  .plan .enroll{display:block;text-align:center;padding:12px 0;border-radius:3px;text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.06em;background:var(--pine);color:var(--paper);}
+  .plan.featured .enroll{background:var(--amber);color:var(--pine-deep);}
+
+  .contact{background:var(--pine-deep);color:var(--paper);}
+  .contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+  .contact h2{font-size:clamp(1.7rem,3vw,2.3rem);color:var(--paper);}
+  .contact p{color:rgba(246,242,234,0.7);margin-top:14px;max-width:420px;}
+  .contact-form{display:flex;flex-direction:column;gap:14px;}
+  .contact-form input, .contact-form select, .contact-form textarea{background:transparent;border:1px solid var(--line-dark);color:var(--paper);padding:13px 14px;border-radius:3px;font-family:'Inter',sans-serif;font-size:0.92rem;}
+  .contact-form input::placeholder, .contact-form textarea::placeholder{color:rgba(246,242,234,0.45);}
+  .contact-form button{background:var(--amber);color:var(--pine-deep);border:none;padding:14px;border-radius:3px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.06em;font-size:0.78rem;cursor:pointer;}
+
+  footer{padding:28px 0;border-top:1px solid var(--line-dark);background:var(--pine-deep);}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;color:rgba(246,242,234,0.5);font-size:0.82rem;}
+
+  @media (max-width: 880px){
+    .hero-inner{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    .rings{grid-template-columns:1fr;}
+    .ring-item{border-right:none;}
+    .course{grid-template-columns:1fr;text-align:left;gap:10px;}
+    .course .price, .course .buy{text-align:left;}
+    .about-inner{grid-template-columns:1fr;}
+    .plans{grid-template-columns:1fr;}
+    .plan{border-right:none;border-bottom:1px solid var(--line);}
+    .contact-inner{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <svg class="ring" viewBox="0 0 26 26"><circle cx="13" cy="13" r="11" fill="none" stroke="#1f3329" stroke-width="1.4"/><circle cx="13" cy="13" r="7" fill="none" stroke="#1f3329" stroke-width="1.4"/><circle cx="13" cy="13" r="3" fill="#7fb069"/></svg>
+      Guided Growth
+    </div>
+    <nav class="nav-links">
+      <a href="#paths">Paths</a>
+      <a href="#courses">Courses</a>
+      <a href="#about">About</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="#pricing">Enroll</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow mono">AI Education, grown at your pace</div>
+      <h1>Every learner starts<br> as a <em>seedling.</em><br>We grow from there.</h1>
+      <p class="lede">Guided Growth Consulting teaches practical AI skills to everyday adults, students, and small businesses — three clear paths, no wasted time on what you already know.</p>
+      <div class="hero-actions">
+        <a class="btn btn-amber" href="#pricing">Browse courses</a>
+        <a class="btn btn-outline" href="#about">Meet your guide</a>
+      </div>
+    </div>
+    <div class="path-card">
+      <span class="mono">The growth path</span>
+      <svg viewBox="0 0 460 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30 260 C 110 260, 110 180, 200 170 C 290 160, 290 90, 380 60"
+              stroke="#3c6e51" stroke-width="2" stroke-dasharray="4 6" fill="none"/>
+        <g>
+          <circle cx="30" cy="260" r="9" fill="#f6f2ea" stroke="#7fb069" stroke-width="2.5"/>
+          <text x="46" y="264" fill="#f6f2ea" font-family="JetBrains Mono" font-size="11">Seedling — everyday AI</text>
+        </g>
+        <g>
+          <circle cx="200" cy="170" r="9" fill="#f6f2ea" stroke="#7fb069" stroke-width="2.5"/>
+          <text x="200" y="148" fill="#f6f2ea" font-family="JetBrains Mono" font-size="11" text-anchor="middle">Sprout — AI for students</text>
+        </g>
+        <g>
+          <circle cx="380" cy="60" r="10" fill="#e8a23d" stroke="#e8a23d" stroke-width="2.5"/>
+          <text x="380" y="36" fill="#e8a23d" font-family="JetBrains Mono" font-size="11" text-anchor="end">Canopy — business</text>
+          <text x="380" y="50" fill="#e8a23d" font-family="JetBrains Mono" font-size="11" text-anchor="end">productivity</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="paths">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="mono">Three rings, one trunk</span>
+      <h2>A path for every learner</h2>
+      <p>Like a tree, growth happens in rings — each one its own course, built for a specific kind of learner.</p>
+    </div>
+    <div class="rings">
+      <div class="ring-item">
+        <div class="ring-num"><span class="dot">01</span>Seedling</div>
+        <h3>Everyday AI</h3>
+        <p>ChatGPT basics, writing emails, planning vacations, meal planning, managing finances, organizing life, presentations, and using AI safely.</p>
+        <div class="who">Adults new to AI</div>
+      </div>
+      <div class="ring-item">
+        <div class="ring-num"><span class="dot">02</span>Sprout</div>
+        <h3>AI for Students</h3>
+        <p>Research using AI, study guides, quiz creation, science projects, essay brainstorming, presentation creation, and responsible AI use.</p>
+        <div class="who">Students, grade 5+</div>
+      </div>
+      <div class="ring-item">
+        <div class="ring-num"><span class="dot">03</span>Canopy</div>
+        <h3>AI for Business Productivity</h3>
+        <p>Email automation, meeting notes, marketing content, customer support, SOP creation, and building AI agents.</p>
+        <div class="who">Small businesses</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="courses" style="background:var(--paper-2);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="mono">Course catalog</span>
+      <h2>Three courses, three outcomes</h2>
+      <p>Pick the one that matches where you are — or where your team is.</p>
+    </div>
+    <div class="courses">
+      <div class="course">
+        <div class="lvl">01<br>SEEDLING</div>
+        <div>
+          <h3>Everyday AI</h3>
+          <div class="desc">For adults completely new to AI who want it to make daily life easier.</div>
+          <ul class="topics">
+            <li>ChatGPT basics</li><li>Writing emails</li><li>Planning vacations</li><li>Meal planning</li><li>Managing finances</li><li>Organizing life</li><li>Creating presentations</li><li>Using AI safely</li>
+          </ul>
+        </div>
+        <div class="meta">Self-paced · adults, no experience needed</div>
+        <div><div class="price">$99</div><div class="buy"><a class="buy-link" href="#pricing">Enroll →</a></div></div>
+      </div>
+      <div class="course">
+        <div class="lvl">02<br>SPROUT</div>
+        <div>
+          <h3>AI for Students</h3>
+          <div class="desc">For students from 5th grade up, using AI honestly and effectively in schoolwork.</div>
+          <ul class="topics">
+            <li>Research using AI</li><li>Study guides</li><li>Quiz creation</li><li>Science projects</li><li>Essay brainstorming</li><li>Presentation creation</li><li>Responsible AI use</li>
+          </ul>
+        </div>
+        <div class="meta">Self-paced · grade 5 and up</div>
+        <div><div class="price">$49</div><div class="buy"><a class="buy-link" href="#pricing">Enroll →</a></div></div>
+      </div>
+      <div class="course">
+        <div class="lvl">03<br>CANOPY</div>
+        <div>
+          <h3>AI for Business Productivity</h3>
+          <div class="desc">For small businesses ready to put AI to work across daily operations.</div>
+          <ul class="topics">
+            <li>Email automation</li><li>Meeting notes</li><li>Marketing content</li><li>Customer support</li><li>SOP creation</li><li>AI agents</li>
+          </ul>
+        </div>
+        <div class="meta">Scoped engagement · small businesses</div>
+        <div><div class="price">$299–999</div><div class="buy"><a class="buy-link" href="#pricing">Enroll →</a></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="wrap about-inner">
+    <div class="about-photo">
+      <svg viewBox="0 0 200 200" fill="none">
+        <circle cx="100" cy="100" r="80" stroke="#7fb069" stroke-width="1.5"/>
+        <circle cx="100" cy="100" r="58" stroke="#7fb069" stroke-width="1.5"/>
+        <circle cx="100" cy="100" r="34" stroke="#e8a23d" stroke-width="1.5"/>
+        <circle cx="100" cy="100" r="10" fill="#e8a23d"/>
+      </svg>
+    </div>
+    <div>
+      <span class="mono" style="color:var(--moss);">About your guide</span>
+      <h2 style="margin-top:12px;">18 years building products. Several years deep in AI. One mission now.</h2>
+      <p>I've spent the last 18 years launching products — the kind of work that forces you to translate new, confusing technology into something real people can actually use. For the last several years, that technology has been AI, and I've been learning and using it hands-on the whole way through.</p>
+      <p>Here's what I keep running into: most people have heard of ChatGPT, but have no real idea how to use it meaningfully or responsibly. And it cuts both ways — teenagers in particular often detest AI outright, not because they've tried it and found it lacking, but because of misinformation that's never been corrected for them.</p>
+      <p>My mission with Guided Growth is to clear that up for everyone, at whatever level they're starting from: show people what's actually possible with AI, and how to use it well and responsibly. AI itself changes constantly, so these courses aren't static — I update them as the tools and best practices evolve, so what you learn stays current, not outdated the moment you finish.</p>
+      <div class="about-stats">
+        <div><div class="num">18 yrs</div><div class="lab">Building products</div></div>
+        <div><div class="num">3</div><div class="lab">Focused courses</div></div>
+        <div><div class="num">5th–owner</div><div class="lab">Who we teach</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="mono">Pricing</span>
+      <h2>Choose your course</h2>
+      <p>Each course is sold on its own — no bundles required.</p>
+    </div>
+    <div class="plans">
+      <div class="plan">
+        <div class="tag">Seedling</div>
+        <h3>Everyday AI</h3>
+        <span class="audience">For adults new to AI</span>
+        <div class="price">$99 <span>one-time</span></div>
+        <ul>
+          <li>8 self-paced lessons</li>
+          <li>Email, travel, finances, presentations &amp; more</li>
+          <li>AI safety fundamentals</li>
+          <li>Certificate of completion</li>
+        </ul>
+        <a class="enroll" href="#contact">Enroll now</a>
+      </div>
+      <div class="plan">
+        <div class="tag">Sprout</div>
+        <h3>AI for Students</h3>
+        <span class="audience">Grade 5 and up</span>
+        <div class="price">$49 <span>one-time</span></div>
+        <ul>
+          <li>7 self-paced lessons</li>
+          <li>Research, study guides &amp; essay help</li>
+          <li>Responsible AI use, built in</li>
+          <li>Certificate of completion</li>
+        </ul>
+        <a class="enroll" href="#contact">Enroll now</a>
+      </div>
+      <div class="plan featured">
+        <div class="tag">Canopy</div>
+        <h3>AI for Business Productivity</h3>
+        <span class="audience">For small businesses</span>
+        <div class="price">$299–999 <span>scoped to your team</span></div>
+        <ul>
+          <li>Email automation &amp; meeting notes</li>
+          <li>Marketing content &amp; customer support</li>
+          <li>SOP creation &amp; AI agents</li>
+          <li>1:1 onboarding included</li>
+        </ul>
+        <a class="enroll" href="#contact">Get a quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap contact-inner">
+    <div>
+      <h2>Ready to start growing?</h2>
+      <p>Tell us which course fits, and we'll send enrollment and payment details within one business day.</p>
+    </div>
+    <form class="contact-form" onsubmit="event.preventDefault(); window.location.href='mailto:hello@guidedgrowthconsulting.com?subject=Course Enrollment Interest&body=Name: ' + encodeURIComponent(this.name.value) + '%0AEmail: ' + encodeURIComponent(this.email.value) + '%0ACourse: ' + encodeURIComponent(this.course.value) + '%0ANotes: ' + encodeURIComponent(this.notes.value);">
+      <input name="name" type="text" placeholder="Your name" required>
+      <input name="email" type="email" placeholder="Email address" required>
+      <select name="course" required>
+        <option value="" disabled selected>Which course?</option>
+        <option>Everyday AI (Seedling) — $99</option>
+        <option>AI for Students (Sprout) — $49</option>
+        <option>AI for Business Productivity (Canopy) — $299–999</option>
+        <option>Not sure yet</option>
+      </select>
+      <textarea name="notes" rows="3" placeholder="Anything else we should know?"></textarea>
+      <button type="submit">Send enrollment request</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© 2026 Guided Growth Consulting</div>
+    <div class="mono">hello@guidedgrowthconsulting.com</div>
+  </div>
+</footer>
+
+</body>
+</html>
